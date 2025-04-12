@@ -13,7 +13,18 @@ console.log("MONGODB_URI from .env:", process.env.MONGODB_URI);
 //import {DB_NAME} from "./constants"
 //{DB_NAME} is used because multiple values are present in ./constants file
 //require('dotenv').config()
-connectDB()
+connectDB()// as  async is used a promise will be returned so then and catch should be used
+.then(()=>{
+    app.listen(process.env.PORT||8000,()=>{
+        console.log(`Server is running on port ${process.env.PORT}`);
+        //this will run when the server is running and connected to the database
+    })
+})
+.catch((err)=>{
+    console.log(err);
+    process.exit(1)// this will exit the process if error occurs
+    //process.exit(1) is used to exit the process with a failure code
+})
 
 
 
