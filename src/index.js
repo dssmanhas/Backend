@@ -25,7 +25,8 @@ connectDB()// as  async is used a promise will be returned so then and catch sho
     process.exit(1)// this will exit the process if error occurs
     //process.exit(1) is used to exit the process with a failure code
 })
-
+import app from './app.js'
+// if export default is ussed then import app simple name is sufficient but if {name} is used then import {name} is used
 
 
 
