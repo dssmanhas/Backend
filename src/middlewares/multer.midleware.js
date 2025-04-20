@@ -5,9 +5,8 @@ const storage=multer.diskStorage({
         cb(null,"./public/temp")//this is the folder where the file will be stored
     },
     filename:function(req,file,cb){
-        const uniqueSuffix=Date.now()+'-'+Math.round(Math.random()*1E9)
         //this will create a unique name for the file
-        cb(null,file.fieldname+'-'+uniqueSuffix)
+        cb(null,file.originalname)
     }
 })
 export const upload=multer({storage,})

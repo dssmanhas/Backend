@@ -4,7 +4,10 @@ console.log("MONGODB_URI in indexdb.js:", process.env.MONGODB_URI);
 const connectDB=async ()=>{
     try{
 
-        const connectionInstance=await mongoose.connect(`${process.env.MONGODB_URI}/${DB_NAME}`)
+        const connectionInstance=await mongoose.connect(`${process.env.MONGODB_URI}/${DB_NAME}`,{useNewUrlParser: true,
+            useUnifiedTopology: true,
+            writeConcern: { w: "majority" } // Set write concern explicitly
+            })
         console.log(`\n MONGODB connected !! DB HOST: ${connectionInstance.connection.host}`);
     }catch(error){
         console.log(error)
